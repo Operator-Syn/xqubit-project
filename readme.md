@@ -41,6 +41,18 @@ nbdime config-git --enable
 pre-commit install
 ```
 
+### 3. Install the nbstripout Git Filter
+
+This registers `nbstripout` as a **Git clean filter**, which automatically strips notebook output and metadata at `git add` time — before the commit hook even runs. This prevents the double-commit issue you'd otherwise hit when staging notebooks alongside other files.
+
+```bash
+nbstripout --install
+```
+
+> ⚠️ This writes to your local `.git/config` and is **not** committed to the repository. Every collaborator must run this **once** after cloning.
+
+You only need to do this once per clone. After that, notebook outputs are stripped silently on every `git add` with no extra steps required.
+
 ---
 
 ## 🖥 Starting the Jupyter Server
@@ -86,7 +98,7 @@ Because `.ipynb` files are JSON, standard Git tools often struggle with them. We
   pipenv run nbdime mergetool
   ```
   This launches a web-based 3-pane merge editor in your browser.
-- **Automatic Scrubbing:** You don't need to clear your outputs manually. The `pre-commit` hook will run `nbstripout` automatically when you `git commit`.
+- **Automatic Scrubbing:** The `nbstripout` Git filter strips outputs and metadata automatically on `git add`. The `pre-commit` hook provides a second pass as a safety net at commit time.
 
 ### Working on Features
 
