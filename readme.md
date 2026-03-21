@@ -43,6 +43,37 @@ pre-commit install
 
 ---
 
+## 🖥 Starting the Jupyter Server
+
+Once your environment is active, launch the notebook server from the project root:
+
+```bash
+# If you're not already in the shell
+pipenv shell
+
+# Start the server
+jupyter notebook
+```
+
+This will open Jupyter in your default browser at `http://localhost:8888`. From there you can create, edit, and run notebooks directly — no VS Code needed.
+
+### Useful Launch Options
+
+```bash
+# Run on a specific port (if 8888 is taken)
+jupyter notebook --port=8890
+
+# Launch without opening a browser (e.g. on a remote machine)
+jupyter notebook --no-browser
+
+# Allow access from other devices on your network
+jupyter notebook --ip=0.0.0.0
+```
+
+> ⚠️ **Heads up:** If you use `--ip=0.0.0.0`, anyone on your local network can access the server. Only use this in a trusted environment.
+
+---
+
 ## 📋 Collaboration Workflow
 
 ### Dealing with Jupyter Notebooks
@@ -78,3 +109,17 @@ Because `.ipynb` files are JSON, standard Git tools often struggle with them. We
 ## 💡 Tips
 
 > **Adding new packages?** Always use `pipenv install <package>` instead of `pip install` so the `Pipfile` stays updated for everyone on the team.
+
+---
+
+## 📜 License
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+> **XQubit Project** — Jupyter Notebook research with clean version control and metadata management.
+
+Copyright (C) 2026 **Operator-Syn**, **[Collaborator 1]**, **[Collaborator 2]**
+
+This program is free software: you can redistribute it and/or modify it under the terms of the **GNU General Public License** as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but **without any warranty** — without even the implied warranty of merchantability or fitness for a particular purpose. See the full [GNU General Public License](https://www.gnu.org/licenses/) for more details.
