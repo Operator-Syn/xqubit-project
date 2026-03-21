@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+jupyter = "*"
+ipykernel = "*"
+nbstripout = "*"
+torch = "*"
+torchvision = "*"
+numpy = "*"
+pandas = "*"
+matplotlib = "*"
+pre-commit = "*"
+nbdime = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.14"
