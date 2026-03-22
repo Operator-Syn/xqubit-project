@@ -11,9 +11,13 @@ torch = "*"
 torchvision = "*"
 numpy = "*"
 pandas = "*"
-matplotlib = "*"
 pre-commit = "*"
 nbdime = "*"
+qiskit = "*"
+qiskit-ibm-runtime = "*"
+pylatexenc = "*"
+matplotlib = "*"
+pyqasm = "*"
 
 [dev-packages]
 
