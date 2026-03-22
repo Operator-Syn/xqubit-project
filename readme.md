@@ -26,7 +26,23 @@ cd xqubit-project && \
 pipenv install --dev
 ```
 
-### 2. Configure Notebook Tools
+### 2. Configure Environment Variables
+
+We use a `.env` file to configure the Python path so that `src/` is importable from any notebook without manual path hacks.
+
+```bash
+cp .env.example .env
+```
+
+The `.env.example` file is committed to the repository as a template. Your `.env` is local and will never be committed. It should contain:
+
+```dotenv
+PYTHONPATH=../src
+```
+
+> ℹ️ Pipenv loads `.env` automatically every time you enter `pipenv shell`, so `src/` will always be on the Python path for your Jupyter kernel.
+
+### 3. Configure Notebook Tools
 
 We use `nbdime` for clean diffs/merges and `pre-commit` to automatically strip notebook metadata (execution counts, etc.) before every commit.
 
@@ -41,7 +57,7 @@ nbdime config-git --enable
 pre-commit install
 ```
 
-### 3. Install the nbstripout Git Filter
+### 4. Install the nbstripout Git Filter
 
 This registers `nbstripout` as a **Git clean filter**, which automatically strips notebook output and metadata at `git add` time — before the commit hook even runs. This prevents the double-commit issue you'd otherwise hit when staging notebooks alongside other files.
 
@@ -111,10 +127,11 @@ Because `.ipynb` files are JSON, standard Git tools often struggle with them. We
 
 | File | Purpose |
 |------|---------|
+| `.env.example` | Template for local environment variables — copy to `.env` after cloning |
 | `.pre-commit-config.yaml` | Configuration for notebook scrubbing |
 | `.gitattributes` | Settings for `nbdime` diff/merge drivers |
 | `Pipfile` | Dependency management |
-| `.gitignore` | Configured to ignore `.orig` merge backups and local checkpoints |
+| `.gitignore` | Configured to ignore `.env`, `.orig` merge backups, and local checkpoints |
 
 ---
 
