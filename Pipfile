@@ -18,6 +18,13 @@ qiskit-ibm-runtime = "*"
 pylatexenc = "*"
 matplotlib = "*"
 pyqasm = "*"
+datasets = "*"
+scikit-learn = "*"
+nltk = "*"
+qiskit-machine-learning = "*"
+qiskit-algorithms = "*"
+seaborn = "*"
+pillow = "*"
 
 [dev-packages]
 
