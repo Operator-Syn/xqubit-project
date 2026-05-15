@@ -34,3 +34,7 @@ def process_features(train_df, test_df, n_components=2):
     print(f"PCA Variance Explained: {sum(pca.explained_variance_ratio_)*100:.2f}%")
 
     return X_train_pca, X_test_pca, vectorizer, pca
+
+    print("=" * 40)
+    print("  Code for the above program is made by        : John-Ronan S. Beira")
+    print("=" * 40)

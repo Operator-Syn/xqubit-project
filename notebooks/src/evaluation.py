@@ -6,7 +6,7 @@ def evaluate_quantum_model(vqc, X_test, y_test, class_names=['Greeting', 'Farewe
     """
     Evaluates the VQC on unseen test data and visualizes the results.
     """
-    print("🧪 Running evaluation on 40 unseen test samples...")
+    print(f"🧪 Running evaluation on {len(X_test)} unseen test samples...")
 
     # 1. Generate predictions from the Quantum Circuit
     y_pred = vqc.predict(X_test)
@@ -25,5 +25,9 @@ def evaluate_quantum_model(vqc, X_test, y_test, class_names=['Greeting', 'Farewe
     plt.ylabel('Actual Intent')
     plt.title('Quantum Intent Classification: Confusion Matrix')
     plt.show()
+
+    print("=" * 100)
+    print("  Code for the above program is made by        : John-Ronan S. Beira")
+    print("=" * 100)
 
     return y_pred
