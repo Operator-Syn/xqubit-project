@@ -1,10 +1,11 @@
+import numpy as np   
 from qiskit.circuit.library import ZZFeatureMap, RealAmplitudes
 from qiskit_algorithms.optimizers import COBYLA
 from qiskit_machine_learning.algorithms import VQC
 # Updated imports for Qiskit 1.0+
 from qiskit.primitives import StatevectorSampler as Sampler
 
-def build_vqc(num_qubits=2, reps=2):
+def build_vqc(num_qubits=2, reps=2, seed=42):
     """
     Constructs the Quantum Circuit components and the VQC object.
     Updated for Qiskit 1.x compatibility.
@@ -21,11 +22,16 @@ def build_vqc(num_qubits=2, reps=2):
     # 4. Construct the Variational Quantum Classifier using the new Sampler
     sampler = Sampler()
 
+    num_params = ansatz.num_parameters
+    rng = np.random.default_rng(seed)
+    initial_point = rng.uniform(-np.pi, np.pi, num_params)
+
     vqc = VQC(
         sampler=sampler,
         feature_map=feature_map,
         ansatz=ansatz,
-        optimizer=optimizer
+        optimizer=optimizer,
+        initial_point=initial_point,
     )
 
     return vqc, feature_map, ansatz
@@ -42,3 +48,7 @@ def train_vqc(vqc, X_train, y_train):
 
     print("✅ Quantum Model Training Complete.")
     return vqc
+
+    print("=" * 100)
+    print("  Code for the above program is made by        : John-Ronan S. Beira")
+    print("=" * 100)

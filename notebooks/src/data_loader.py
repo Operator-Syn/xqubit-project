@@ -44,4 +44,8 @@ def fetch_intent_data(labels=[0, 1], samples_per_label=100, test_size=0.2):
     )
 
     print(f"✅ Success: {len(train_df)} training and {len(test_df)} testing samples retrieved.")
+
+    print("=" * 40)
+    print("  Code for the above program is made by        : John-Ronan S. Beira")
+    print("=" * 40)
     return train_df, test_df
